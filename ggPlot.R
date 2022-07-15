@@ -48,3 +48,38 @@ ggplot(iris, aes(x = Sepal.Length,
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length))+
   geom_point(aes(col=Species))+
   geom_smooth(aes(col=Species), method="lm")
+
+# Make color by species default for all layers - reduces redundancy 
+#of the aes(col = species code from previous examples)
+g <- ggplot(iris, aes(x = Sepal.Length, 
+                 y = Petal.Length,
+                 col=Species)) +
+  geom_point()+
+  geom_smooth(method="lm")
+View(g) # Shows you info about the layers etc.
+g
+
+# Add scale details -> lets change scale colors for ex. and go by a theme
+g <- g + scale_color_ordinal()
+g
+
+# Lets make each species a different plot -> lets add some facets.
+g <- g + facet_wrap(~Species, nrow = 3)
+g
+
+# Changing the coordinate system - this corrdinate helps you gage the angle of the slope
+g <- g + coord_polar()
+g
+
+# Change the theme for the plots 
+# Not the best theme, but experiment with different themes and see what works best 4 u
+g <- g + theme_dark()
+g
+
+# Save the plot -> autmoatically saves the the graph last plotted (latest g)
+ggsave("Iris_plot.png", width=6, height=10, 
+       units="cm", dpi="screen") #dpi <- resolution (set by "screen" resolution)
+
+# To specify which plot
+ggsave("Iris_plot.png", width=6, height=10, 
+       units="cm", dpi="screen", plot = g) #dpi <- resolution (set by "screen" resolution)
