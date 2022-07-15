@@ -22,4 +22,5 @@ if(speed < 40) {print("Slow")
 } else {
   print("Ticket")}
 
+readline(prompt = "How are you? (Good/Bad)")
 
