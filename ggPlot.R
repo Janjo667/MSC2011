@@ -83,3 +83,7 @@ ggsave("Iris_plot.png", width=6, height=10,
 # To specify which plot
 ggsave("Iris_plot.png", width=6, height=10, 
        units="cm", dpi="screen", plot = g) #dpi <- resolution (set by "screen" resolution)
+
+# better resolution for mac 
+ggsave("Iris_plot.png", width=6, height=10, 
+       units="cm", dpi="retina")
