@@ -30,3 +30,21 @@ ggplot(iris, aes(x = Sepal.Length,
 
 # The linear regression between the petal length and sepal length is different for every species,
 # we wouldn't have knowin unless we experimented,
+
+# Add smoother line - its not defaulted by the previous aes within the geom_point
+# If you add the color within the aes(), it will include the color ref. in the legend as well.
+ggplot(iris, aes(x = Sepal.Length, 
+                 y = Petal.Length)) +
+  geom_point(aes(col=Species)) +
+  geom_smooth(col = "purple")
+
+# Labelled smoother line
+ggplot(iris, aes(x = Sepal.Length, 
+                 y = Petal.Length)) +
+  geom_point(aes(col=Species)) +
+  geom_smooth(aes(col = "Smoother Line"))
+
+# Make smoother line species specific and calculated by linear regression
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length))+
+  geom_point(aes(col=Species))+
+  geom_smooth(aes(col=Species), method="lm")
